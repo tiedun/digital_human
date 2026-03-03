@@ -6,14 +6,14 @@ import numpy as np
 # Load the model
 model = Qwen3TTSModel.from_pretrained(
     # "/home/tiedun/models/qwen3-tts-base",
-    "/home/tiedun/models/Qwen3-TTS-12Hz-1.7B-Base",
+    "/root/autodl-tmp/models/Qwen3-TTS-12Hz-1.7B-Base",
     device_map="cuda:0",
     dtype=torch.bfloat16,
-    # attn_implementation="flash_attention_2",
+    attn_implementation="flash_attention_2",
 )
 
 # Reference audio for cloning
-ref_audio = "/home/tiedun/ffmpeg_workspace/clear.wav"
+ref_audio = "clear.wav"
 ref_text  = """
             哈喽，大家好！今天再来给大家带来几个内推啊。
             首先第一个呢，是一个嵌入式——嗯，汇川的一个内推。
@@ -61,7 +61,6 @@ text_long = """
             # """
 
 text_short = """
-            【口播风格：更有热情、更有抑扬顿挫；关键词加重；句间自然停顿；语速略快】
             各位小伙伴大家好，我是数字人 大海哥，欢迎大家收藏加关注
             """
 
